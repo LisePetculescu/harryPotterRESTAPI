@@ -64,6 +64,7 @@ public class CourseController {
         Student student = optionalStudent.get();
 
         // Add the student to the course
+        List<Student> students = studentRepository.findAll();
         course.addStudent(student);
         courseRepository.save(course);
 

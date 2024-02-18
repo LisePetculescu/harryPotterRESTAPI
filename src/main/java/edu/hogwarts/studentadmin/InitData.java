@@ -12,7 +12,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -27,39 +26,6 @@ public class InitData implements CommandLineRunner {
         this.studentRepository = studentRepository;
         this.teacherRepository = teacherRepository;
         this.houseRepository = houseRepository;
-
-
-//
-//
-
-
-
-        // list of students from 1991
-       // List<Student> hogwartsStudents1991 = new ArrayList<>();
-
-        // students from Gryffindor
-       // Student harry = new Student("Harry", "James", "Potter", LocalDate.of(1980, 7, 31), gryffindor, true, 1991, 1998, true);
-//        hogwartsStudents1991.add(new Student("Hermione", "Jean", "Granger", LocalDate.of(1979, 9, 19), gryffindor, true, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Ronald", "Bilius", "Weasley", LocalDate.of(1980, 3, 1), gryffindor, true, 1991, 1998, true));
-//
-//        // students from Hufflepuff
-//        hogwartsStudents1991.add(new Student("Cedric", "", "Diggory", LocalDate.of(1977, 9, 1), hufflepuff, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Hannah", "", "Abbott", LocalDate.of(1979, 6, 12), hufflepuff, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Ernie", "", "Macmillan", LocalDate.of(1980, 8, 22), hufflepuff, false, 1991, 1998, true));
-//
-//        // students from Ravenclaw
-//        hogwartsStudents1991.add(new Student("Luna", "", "Lovegood", LocalDate.of(1981, 2, 13), ravenclaw, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Cho", "", "Chang", LocalDate.of(1979, 9, 3), ravenclaw, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Terry", "", "Boot", LocalDate.of(1980, 5, 7), ravenclaw, false, 1991, 1998, true));
-//
-//        // students from Slytherin
-//        hogwartsStudents1991.add(new Student("Draco", "", "Malfoy", LocalDate.of(1980, 6, 5), slytherin, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Pansy", "", "Parkinson", LocalDate.of(1980, 2, 2), slytherin, false, 1991, 1998, true));
-//        hogwartsStudents1991.add(new Student("Vincent", "", "Crabbe", LocalDate.of(1980, 9, 12), slytherin, false, 1991, 1998, true));
-
-        // Create the Hogwarts course
-        // Course hogwartsCourse = new Course("Potions", 1991, true, snape, hogwartsStudents1991);
-
 
 
     }
@@ -135,9 +101,14 @@ public class InitData implements CommandLineRunner {
 // Retrieve all students from the database
         List<Student> students = studentRepository.findAll();
 
+        // Assuming you have a Course object course and a Student object student
+       // hogwartsCourse.addStudent(students);
+
 // Create the course and set Snape as the teacher and all the students
         Course hogwartsCourse = new Course("Potions", 1991, true, snape, students);
         courseRepository.save(hogwartsCourse);
+
+
 
 
 //        Course hogwartsCourse = new Course("Potions", 1991, true, snape, List.of(harry));
