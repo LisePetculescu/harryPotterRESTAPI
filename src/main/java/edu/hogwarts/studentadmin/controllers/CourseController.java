@@ -1,9 +1,7 @@
 package edu.hogwarts.studentadmin.controllers;
 
 import edu.hogwarts.studentadmin.models.Course;
-import edu.hogwarts.studentadmin.models.Student;
 import edu.hogwarts.studentadmin.repositories.CourseRepository;
-import edu.hogwarts.studentadmin.repositories.StudentRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
