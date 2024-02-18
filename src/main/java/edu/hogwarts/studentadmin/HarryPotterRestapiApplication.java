@@ -8,6 +8,9 @@ public class HarryPotterRestapiApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HarryPotterRestapiApplication.class, args);
+
+
     }
+
 
 }

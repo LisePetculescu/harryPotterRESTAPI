@@ -1,9 +1,6 @@
 package edu.hogwarts.studentadmin.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -16,11 +13,27 @@ public class Student {
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String house; // husk at lave String om til House senere
+    @OneToOne
+    private House house;
     private boolean prefect;
     private int enrollmentYear;
     private int graduationYear;
     private boolean graduated;
+
+    public Student(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean prefect, int enrollmentYear, int graduationYear, boolean graduated) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.house = house;
+        this.prefect = prefect;
+        this.enrollmentYear = enrollmentYear;
+        this.graduationYear = graduationYear;
+        this.graduated = graduated;
+    }
+
+    public Student() {
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -62,11 +75,11 @@ public class Student {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getHouse() {
+    public House getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(House house) {
         this.house = house;
     }
 

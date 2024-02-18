@@ -1,11 +1,10 @@
 package edu.hogwarts.studentadmin.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import edu.hogwarts.studentadmin.EmpType;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
+
 
 @Entity
 public class Teacher {
@@ -16,11 +15,27 @@ public class Teacher {
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
-    private String house; // skrift til HOUSE type senere
+    @OneToOne
+    private House house;
     private boolean headOfHouse;
-    private String employment;
+    private EmpType employment;
     private LocalDate employmentStart;
     private LocalDate getEmploymentEnd;
+
+    public Teacher(String firstName, String middleName, String lastName, LocalDate dateOfBirth, House house, boolean headOfHouse, Enum employment, LocalDate employmentStart, LocalDate getEmploymentEnd) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.house = house;
+        this.headOfHouse = headOfHouse;
+        this.employment = (EmpType) employment;
+        this.employmentStart = employmentStart;
+        this.getEmploymentEnd = getEmploymentEnd;
+    }
+
+    public Teacher() {
+    }
 
     public int getId() {
         return id;
@@ -62,11 +77,11 @@ public class Teacher {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getHouse() {
+    public House getHouse() {
         return house;
     }
 
-    public void setHouse(String house) {
+    public void setHouse(House house) {
         this.house = house;
     }
 
@@ -78,11 +93,11 @@ public class Teacher {
         this.headOfHouse = headOfHouse;
     }
 
-    public String getEmployment() {
+    public EmpType getEmployment() {
         return employment;
     }
 
-    public void setEmployment(String employment) {
+    public void setEmployment(EmpType employment) {
         this.employment = employment;
     }
 

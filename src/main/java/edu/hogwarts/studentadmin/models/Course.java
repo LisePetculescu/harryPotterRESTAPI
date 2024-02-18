@@ -1,9 +1,8 @@
 package edu.hogwarts.studentadmin.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Course {
@@ -13,8 +12,23 @@ public class Course {
     private String subject;
     private int schoolYear;
     private boolean current;
-    //private Teacher teacher;
+    @OneToOne
+    private Teacher teacher;
+    @ManyToMany
+    private List<Student> students;
     //private Student[] students;
+
+
+    public Course(String subject, int schoolYear, boolean current, Teacher teacher, List<Student> students) {
+        this.subject = subject;
+        this.schoolYear = schoolYear;
+        this.current = current;
+        this.teacher = teacher;
+        this.students = students;
+    }
+
+    public Course() {
+    }
 
     public int getId() {
         return id;
@@ -48,19 +62,23 @@ public class Course {
         this.current = current;
     }
 
-//    public Teacher getTeacher() {
-//        return teacher;
-//    }
-//
-//    public void setTeacher(Teacher teacher) {
-//        this.teacher = teacher;
-//    }
-//
-//    public Student[] getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Student[] students) {
-//        this.students = students;
-//    }
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
 }

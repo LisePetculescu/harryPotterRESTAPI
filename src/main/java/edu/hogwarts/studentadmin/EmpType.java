@@ -1,3 +1,5 @@
+package edu.hogwarts.studentadmin;
+
 public enum EmpType {
     Tenured,
     Temporary,
