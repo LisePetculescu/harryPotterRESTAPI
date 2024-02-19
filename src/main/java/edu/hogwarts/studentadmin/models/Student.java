@@ -13,7 +13,8 @@ public class Student {
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "house")
     private House house;
     private boolean prefect;
     private int enrollmentYear;

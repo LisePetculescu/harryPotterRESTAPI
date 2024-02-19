@@ -2,7 +2,10 @@ package edu.hogwarts.studentadmin.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Course {
@@ -14,10 +17,17 @@ public class Course {
     private boolean current;
     @OneToOne
     private Teacher teacher;
-   // @ManyToMany
-    // private List<Student> students;
-    @ManyToOne
-    private Student[] students;
+    @ManyToMany
+     private List<Student> students = new ArrayList<>();
+    //@ElementCollection
+   // private List<Integer> studentIds; // List of student IDs
+//    @ManyToOne
+//    private Student[] students;
+public Collection<Integer> getStudentIds() {
+    return students.stream()
+            .map(Student::getId) // Assuming getId() returns the student's ID
+            .collect(Collectors.toList());
+}
 
 
     public Course(String subject, int schoolYear, boolean current, Teacher teacher, List<Student> students) {
@@ -25,7 +35,7 @@ public class Course {
         this.schoolYear = schoolYear;
         this.current = current;
         this.teacher = teacher;
-        this.students = students.toArray(new Student[0]);
+        this.students = students;
     }
 
     public Course() {
@@ -71,26 +81,34 @@ public class Course {
         this.teacher = teacher;
     }
 
-//    public List<Student> getStudents() {
-//        return students;
-//    }
-
-//    public void setStudents(List<Student> students) {
-//        this.students = students;
-//    }
-
-    //    public void addStudent(Student student) {
-//        students.add(student);
-//    }
-
-
-    public Student[] getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
+
+//    public Collection<Integer> getStudentIds() {
+//        return students.getId();
+//    }
+
+
+//    public Student[] getStudents() {
+//        return students;
+//    }
+//
+//    public void setStudents(Student[] students) {
+//        this.students = students;
+//    }
 
 //    public void addStudent(Student[] students) {
 //        students.add(student);

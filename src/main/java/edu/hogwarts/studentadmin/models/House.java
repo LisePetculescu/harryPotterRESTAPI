@@ -8,8 +8,8 @@ import java.util.List;
 public class House {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
     private String name;
     private String founder;
     @ElementCollection
@@ -24,13 +24,13 @@ public class House {
     public House() {
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public String getName() {
         return name;
