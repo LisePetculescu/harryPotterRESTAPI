@@ -52,7 +52,13 @@ public class House {
         return colours;
     }
 
+   // public void setColours(List<String> colours) {
+  //      this.colours = colours;
+ //   }
     public void setColours(List<String> colours) {
+        if (colours.size() != 2) {
+            throw new IllegalArgumentException("House must have exactly two colors.");
+        }
         this.colours = colours;
     }
 }
