@@ -99,18 +99,18 @@ public class InitData implements CommandLineRunner {
         Student vincent = new Student("Vincent", "", "Crabbe", LocalDate.of(1980, 9, 12), slytherin, false, 1991, 1998, true);
         studentRepository.save(vincent);
 
-        Course hogwartsCourse = new Course("Potions", 1991, true, snape, new ArrayList<>());
-        hogwartsCourse.getStudentIds().add(harry.getId()); // Assuming harry is an existing student
-        hogwartsCourse.getStudentIds().add(hermione.getId()); // Assuming hermione is an existing student
-        courseRepository.save(hogwartsCourse);
-
-
-//        // Retrieve all students from the database
-//        List<Student> students = studentRepository.findAll();
-//
-//// Create the course and set Snape as the teacher and add all the students
-//        Course hogwartsCourse = new Course("Potions", 1991, true, snape, students);
+//        Course hogwartsCourse = new Course("Potions", 1991, true, snape, new ArrayList<>());
+//        hogwartsCourse.getStudentIds().add(harry.getId()); // Assuming harry is an existing student
+//        hogwartsCourse.getStudentIds().add(hermione.getId()); // Assuming hermione is an existing student
 //        courseRepository.save(hogwartsCourse);
+//
+
+        // Retrieve all students from the database
+        List<Student> students = studentRepository.findAll();
+
+// Create the course and set Snape as the teacher and add all the students
+        Course hogwartsCourse = new Course("Potions", 1991, true, snape, students);
+        courseRepository.save(hogwartsCourse);
 
 
 // Retrieve all students from the database
