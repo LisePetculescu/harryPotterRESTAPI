@@ -12,11 +12,13 @@ public class Student {
     private int id;
 
     private String firstName;
+    //@Column(name = "mellemnavn")
     private String middleName;
     private String lastName;
     private LocalDate dateOfBirth;
     @ManyToOne
     @JoinColumn(name = "house")
+    //@JoinColumn(name = "house", referencedColumnName = "founder")
     private House house;
     private boolean prefect;
     private int enrollmentYear;

@@ -103,12 +103,12 @@ public class InitData implements CommandLineRunner {
 //        hogwartsCourse.getStudentIds().add(harry.getId()); // Assuming harry is an existing student
 //        hogwartsCourse.getStudentIds().add(hermione.getId()); // Assuming hermione is an existing student
 //        courseRepository.save(hogwartsCourse);
-//
+
 
         // Retrieve all students from the database
         List<Student> students = studentRepository.findAll();
 
-// Create the course and set Snape as the teacher and add all the students
+//      Create the course and set Snape as the teacher and add all the students
         Course hogwartsCourse = new Course("Potions", 1991, true, snape, students);
         courseRepository.save(hogwartsCourse);
 
@@ -119,15 +119,10 @@ public class InitData implements CommandLineRunner {
         // Assuming you have a Course object course and a Student object student
        // hogwartsCourse.addStudent(students);
 
-// Create the course and set Snape as the teacher and all the students
-//        Course hogwartsCourse = new Course("Potions", 1991, true, snape, students);
-//        courseRepository.save(hogwartsCourse);
-//
-//        Course hogwartsCourse = new Course("Potions", 1991, true, snape, List.of(harry,hermione ));
-//        courseRepository.save(hogwartsCourse);
-//
 
-//        Course hogwartsCourse = new Course("Potions", 1991, true, snape, List.of(harry));
-//        courseRepository.save(hogwartsCourse);
+        Course hw3 = new Course("Divination", 2, false);
+
+        Course hogwartsCourse2 = new Course("Potions", 1, true, snape, harry);
+        courseRepository.save(hogwartsCourse2);
     }
 }

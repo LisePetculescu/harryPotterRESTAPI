@@ -15,19 +15,17 @@ public class Course {
     private String subject;
     private int schoolYear;
     private boolean current;
-    @OneToOne
+    @ManyToOne
     private Teacher teacher;
     @ManyToMany
      private List<Student> students = new ArrayList<>();
-    //@ElementCollection
-   // private List<Integer> studentIds; // List of student IDs
-//    @ManyToOne
-//    private Student[] students;
-public Collection<Integer> getStudentIds() {
-    return students.stream()
-            .map(Student::getId) // Assuming getId() returns the student's ID
-            .collect(Collectors.toList());
-}
+
+
+//public Collection<Integer> getStudentIds() {
+//    return students.stream()
+//            .map(Student::getId) // Assuming getId() returns the student's ID
+//            .collect(Collectors.toList());
+//}
 
 
     public Course(String subject, int schoolYear, boolean current, Teacher teacher, List<Student> students) {
@@ -37,8 +35,20 @@ public Collection<Integer> getStudentIds() {
         this.teacher = teacher;
         this.students = students;
     }
+    public Course(String subject, int schoolYear, boolean current, Teacher teacher, Student student) {
+        this.subject = subject;
+        this.schoolYear = schoolYear;
+        this.current = current;
+        this.teacher = teacher;
+        this.students = new ArrayList<>();
+        this.students.add(student);
+    }
 
     public Course() {
+    }
+
+    public Course(String subject, int schoolYear, boolean current) {
+        this(subject, schoolYear, current, null, new ArrayList<>());
     }
 
     public int getId() {
@@ -96,29 +106,5 @@ public Collection<Integer> getStudentIds() {
     public void removeStudent(Student student) {
         students.remove(student);
     }
-
-//    public Collection<Integer> getStudentIds() {
-//        return students.getId();
-//    }
-
-
-//    public Student[] getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(Student[] students) {
-//        this.students = students;
-//    }
-
-//    public void addStudent(Student[] students) {
-//        students.add(student);
-//        students.getCourses().add(this); // Also add the course to the student's list of courses
-//    }
-//
-//    public void removeStudent(Student student) {
-//        students.remove(student);
-//        student.getCourses().remove(this); // Remove the course from the student's list of courses
-//    }
-
 
 }
