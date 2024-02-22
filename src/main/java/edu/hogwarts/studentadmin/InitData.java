@@ -121,6 +121,7 @@ public class InitData implements CommandLineRunner {
 
 
         Course hw3 = new Course("Divination", 2, false);
+        courseRepository.save(hw3);
 
         Course hogwartsCourse2 = new Course("Potions", 1, true, snape, harry);
         courseRepository.save(hogwartsCourse2);
